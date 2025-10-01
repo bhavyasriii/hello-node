@@ -7,7 +7,13 @@ async function main() {
       { timeout: 10_000 }
     );
 
-    console.log("Total users fetched:", res.data.length);
+    const firstThree = res.data.slice(0, 3).map((u: any) => ({
+      id: u.id,
+      username: u.username,
+      email: u.email
+    }));
+
+    console.table(firstThree);
 
   } catch (err: any) {
     console.error("Request failed:", err?.message ?? err);
