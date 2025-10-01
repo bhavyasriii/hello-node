@@ -6,15 +6,9 @@ async function main() {
       "https://jsonplaceholder.typicode.com/users",
       { timeout: 10_000 }
     );
-    const firstThree=(res.data.slice(0,3).map((u:any)=> ({
-        id: u.id,
-        username: u.username,
-        email: u.email,
-        address: `${u.address.street}, ${u.address.suite}, ${u.address.city}, ${u.address.zipcode}`
-    })
-    ));
 
-    console.table(firstThree);
+    console.log("Total users fetched:", res.data.length);
+
   } catch (err: any) {
     console.error("Request failed:", err?.message ?? err);
   }
